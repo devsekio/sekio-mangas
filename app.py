@@ -25,31 +25,26 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 # --- RUTA SECRETA DE INSTALACIÓN ---
-@app.route('/setup-inicial')
-def setup_inicial():
+# --- RUTAS DE INSTALACIÓN SEPARADAS ---
+@app.route('/setup-1-mangas')
+def setup_mangas():
     try:
-        # 1. Crear las tablas vacías (si no existen)
         with app.app_context():
-            db.create_all()
-            
-            # 2. Ejecutar la descarga de mangas
-            # (Llamamos a la función importada arriba)
-            fetch_script() 
-            
-            # 3. Generar los enlaces
-            links_script()
-            
-        return """
-        <div style="font-family: sans-serif; text-align: center; padding: 50px;">
-            <h1 style="color: green;">¡ÉXITO TOTAL! 🚀</h1>
-            <p>La base de datos se ha llenado correctamente.</p>
-            <a href="/" style="background: #6366f1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Ir al Inicio</a>
-        </div>
-        """
+            db.create_all() # Asegura que la tabla exista
+            fetch_script()  # Descarga solo los mangas
+        return "<h1>✅ Paso 1 Completado: Mangas Descargados. <br><a href='/setup-2-links'>Ir al Paso 2 (Links)</a></h1>"
     except Exception as e:
-        return f"<h1>Hubo un error: {str(e)}</h1>"
-# -----------------------------------
+        return f"<h1>Error en Paso 1: {str(e)}</h1>"
 
+@app.route('/setup-2-links')
+def setup_links():
+    try:
+        with app.app_context():
+            links_script() # Busca solo los links
+        return "<h1>✅ Paso 2 Completado: Links Generados. <br><a href='/'>¡IR AL INICIO!</a></h1>"
+    except Exception as e:
+        return f"<h1>Error en Paso 2: {str(e)}</h1>"
+# --------------------------------------
 @app.route('/')
 def index():
     mangas = Manga.query.all()

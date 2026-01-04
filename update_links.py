@@ -1,4 +1,5 @@
 import time
+import os
 import urllib.parse
 from flask import Flask
 from models import db, Manga, Link
@@ -52,7 +53,15 @@ KNOWN_IDS = {
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mangas.db'
+    
+    # --- CONFIGURACIÓN PARA LA NUBE ---
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url and database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url or 'sqlite:///mangas.db'
+    # ----------------------------------
+    
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     return app
