@@ -7,17 +7,7 @@ from deep_translator import GoogleTranslator
 
 # LISTA CONFIRMADA DE ÉXITOS EN MANGAPLUS (Enero 2026)
 MANGAPLUS_HITS = [
-    "One Piece", "Jujutsu Kaisen", "Chainsaw Man", "Boruto: Two Blue Vortex",
-    "Spy x Family", "Kaiju No. 8", "Dandadan", "Sakamoto Days",
-    "My Hero Academia", "Black Clover", "Blue Box", "Kagurabachi",
-    "Oshi no Ko", "Dragon Ball Super", "Blue Exorcist", "Bleach",
-    "Undead Unluck", "Mission: Yozakura Family", "Witch Watch", "Akane-banashi",
-    "Mashle", "The Elusive Samurai", "Me & Roboco", "Kill Blue",
-    "Marriage Toxin", "Kindergarten WARS", "Choujin X", "Heart Gear",
-    "RuriDragon", "Gokurakugai", "Show-ha Shoten!", "World Trigger",
-    "Twin Star Exorcists", "Seraph of the End", "Platinum End",
-    "Terra Formars", "Hell's Paradise: Jigokuraku", "Summer Time Rendering",
-    "Claymore", "Death Note", "Naruto", "Demon Slayer", "Dr. STONE"
+    "One Piece", "Jujutsu Kaisen", "Chainsaw Man", "Boruto: Two Blue Vortex"
 ]
 
 def create_app():
