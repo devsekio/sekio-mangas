@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Manga Web{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_description %}Descubre y gestiona tus mangas favoritos.{% endblock %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#121312',
+                            light: '#1a1b1a',
+                            accent: '#ad0013',
+                            gold: '#a67d43',
+                            glow: '#ff1a1a',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    },
+                    animationDelay: {
+                        '2000': '2s',
+                        '4000': '4s',
+                    }
+                }
+            }
+        }
+
+
+    </script>
+    <style>
+        body {
+            background-color: #121312;
+            background-image:
+                radial-gradient(at 0% 0%, hsla(0, 100%, 5%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(353, 100%, 10%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(35, 42%, 15%, 1) 0, transparent 50%);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .glass {
+            background: rgba(18, 19, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(166, 125, 67, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(173, 0, 19, 0.5);
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-100 min-h-screen flex flex-col font-sans">
+
+    <!-- Decorative background blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 right-1/4 w-96 h-96 bg-brand-gold rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-1/2 w-96 h-96 bg-brand-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass border-b border-brand-gold/20 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/"
+                class="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-brand-gold hover:from-brand-glow hover:to-brand-gold transition-all duration-300">
+                Sekio-Mangas
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="/"
+                    class="text-gray-300 hover:text-brand-gold hover:text-glow transition font-medium">Inicio</a>
+                <a href="/privacy"
+                    class="text-gray-300 hover:text-brand-gold transition font-medium text-sm">Privacidad</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-brand-gold/10 bg-black/40 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left">
+                    <p class="text-gray-400 text-sm">&copy; 2026 Sekio-Mangas. Hecho con <span
+                            class="text-brand-accent">❤</span>
+                        para fans.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="/privacy" class="text-sm text-gray-500 hover:text-brand-gold transition">Política de
+                        Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
