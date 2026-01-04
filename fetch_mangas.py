@@ -7,8 +7,8 @@ from deep_translator import GoogleTranslator
 
 # LISTA CONFIRMADA DE ÉXITOS EN MANGAPLUS (Enero 2026)
 MANGAPLUS_HITS = [
-    #"One Piece", "Jujutsu Kaisen", "Chainsaw Man", "Boruto: Two Blue Vortex",
-    #"Spy x Family", "Kaiju No. 8", "Dandadan", "Sakamoto Days",
+    "One Piece", "Jujutsu Kaisen", "Chainsaw Man", "Boruto: Two Blue Vortex",
+    "Spy x Family", "Kaiju No. 8", "Dandadan", "Sakamoto Days",
     "My Hero Academia", "Black Clover", "Blue Box", "Kagurabachi",
     #"Oshi no Ko", "Dragon Ball Super", "Blue Exorcist", "Bleach",
     #"Undead Unluck", "Mission: Yozakura Family", "Witch Watch", "Akane-banashi",
